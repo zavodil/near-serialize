@@ -1,12 +1,9 @@
-export CONTRACT_ID=dev-1664808990339-28346697468798
-
-near call $CONTRACT_ID insert_event '{"event": {"price": "1000000000000000000000000", "guests": ["alice.testnet", "bob.testnet"]}}' --accountId $CONTRACT_ID
-near view $CONTRACT_ID get_event '{"event_owner_id": "'$CONTRACT_ID'"}'
-near-blank-project
+near-serialization-tutorial
 ==================
 
-This app was initialized with [create-near-app]
+Code example for 2 serialization formats on NEAR: Borsh and JSON.
 
+Access tutorial at [/contract/src/lib.rs](https://github.com/zavodil/near-serialize/blob/master/contract/src/lib.rs)
 
 Quick Start
 ===========
@@ -31,11 +28,8 @@ Exploring The Code
 ==================
 
 1. The smart-contract code lives in the `/contract` folder. See the README there for
-   more info. In blockchain apps the smart contract is the "backend" of your app.
-2. The frontend code lives in the `/frontend` folder. `/frontend/index.html` is a great
-   place to start exploring. Note that it loads in `/frontend/index.js`,
-   this is your entrypoint to learn how the frontend connects to the NEAR blockchain.
-3. Test your contract: `npm test`, this will run the tests in `integration-tests` directory.
+   more info.
+3. Test your contract: `npm test.
 
 
 Deploy
