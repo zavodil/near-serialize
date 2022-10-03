@@ -123,7 +123,7 @@ impl Contract {
         self.internal_set_event(&env::predecessor_account_id(), &event);
     }
 
-    // But we can easily use any Borsh object in a private method, like this setter:
+    // And ew can easily use any Borsh object as a parameter in a private method, like this setter:
 
     // set event helper
     pub(crate) fn internal_set_event(&mut self, event_owner_id: &EventOwnerId, event: &Event) {
@@ -134,6 +134,11 @@ impl Contract {
     pub(crate) fn internal_get_event(&self, event_owner_id: &EventOwnerId) -> Event {
         self.events.get(event_owner_id).expect("ERR_MISSING_EVENT")
     }
+
+    // That's pretty much it!
+    // Use JSON serialization on input/output if needed and use Borsh serialization to store objects
+    // in the contract state.
+    // List of available collections: https://docs.rs/near-sdk/latest/near_sdk/collections/#structs
 }
 
 /// Helper structure to for keys of the persistent collections.
