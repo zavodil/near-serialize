@@ -3,7 +3,7 @@ use crate::*;
 #[derive(Serialize, Deserialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct EventJSON {
-    pub price: WrappedBalance,
+    pub price: U128,
     pub guests: Vec<AccountId>
 }
 
@@ -11,7 +11,7 @@ pub struct EventJSON {
 impl From<Event> for EventJSON {
     fn from(event: Event) -> Self {
         EventJSON {
-            price: WrappedBalance::from(event.price),
+            price: U128::from(event.price),
             guests: event.guests.to_vec()
         }
     }

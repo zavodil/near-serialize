@@ -23,7 +23,7 @@ use near_sdk::borsh::{self, BorshSerialize, BorshDeserialize};
 // Import JSON (default) serialization from near_sdk::serde
 use near_sdk::serde::{Serialize, Deserialize};
 
-use near_sdk::{AccountId, Balance, BorshStorageKey, env, near_bindgen};
+use near_sdk::{AccountId, BorshStorageKey, env, near_bindgen};
 use near_sdk::collections::{LookupMap, UnorderedSet};
 use near_sdk::json_types::U128;
 
@@ -56,7 +56,7 @@ impl Contract {
     // which doesn't support JSON serialization
 
     /* WRONG
-    pub fn get_event_WRONG(&self, event_owner_id: EventOwnerId) -> Event {
+    pub fn get_event(&self, event_owner_id: EventOwnerId) -> Event {
         self.internal_get_event(&event_owner_id)
     }
     */
@@ -82,7 +82,7 @@ impl Contract {
     // which doesn't support JSON serialization and we can't provide it as the parameter
 
     /* WRONG
-    pub fn insert_event_WRONG(&mut self, event: Event) {
+    pub fn insert_event(&mut self, event: Event) {
         let event_owner_id = env::predecessor_account_id();
         self.events.insert(&event_owner_id, &event);
     }
@@ -107,7 +107,7 @@ impl Contract {
     // UnorderedSet object there
 
     /* WRONG
-    pub fn set_guests_WRONG(&mut self, guests: UnorderedSet<AccountId>) {
+    pub fn set_guests(&mut self, guests: UnorderedSet<AccountId>) {
         let mut event = self.internal_get_event(&env::predecessor_account_id());
         event.guests = guests;
         self.internal_set_event(&env::predecessor_account_id(), &event);
@@ -153,7 +153,6 @@ mod event_json;
 use event::*;
 use event_json::*;
 
-type WrappedBalance = U128;
 type EventOwnerId = AccountId;
 
 #[cfg(test)]

@@ -40,6 +40,8 @@ We read/write data about events, each event belongs to corresponding NEAR accoun
  - price [type: u128] amount on NEAR tokens to pay for event ticket
  - guests [type: UnorderedSet] list of accounts invited to the event
 
+[Full contract code](contract/src/lib.rs).
+
 ```rust
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Contract {
@@ -207,7 +209,9 @@ That's pretty much it!
 > Use `JSON` serialization on input/output if needed and use `Borsh` serialization to store objects
 in the contract state. You will save gas for internal operations and reduce expenses for a storage staking then.
 
-List of available collections: https://docs.rs/near-sdk/latest/near_sdk/collections/#structs
+### Additional links
 
-Docs portal: https://docs.near.org/
+- [Contract code of this tutorial](contract/src/lib.rs)
+- [List of available collections](https://docs.rs/near-sdk/latest/near_sdk/collections/#structs)
+- [Docs portal](https://docs.near.org)
   
