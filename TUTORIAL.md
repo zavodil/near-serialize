@@ -1,11 +1,11 @@
-#Borsh and JSON serialization on NEAR 
+# Borsh and JSON serialization on NEAR 
 
 There are 2 serialization formats within the SDK to define how data structures are translated into bytes:
 
 - Borsh (https://borsh.io/) 
 - JSON (default)
 
-##Borsh Serialization
+## Borsh Serialization
 
 A data-structure can be serialized/deserialized with Borsh to **store in the contract storage in binary format**.
  
@@ -15,7 +15,7 @@ Features:
   - Strict and canonical binary representation
   - Fast and less overhead in most cases
 
-##JSON Serialization
+## JSON Serialization
 
 A data-structure serialized/deserialized with JSON is using for passing data into input/output methods of the smart contract.
 
@@ -25,16 +25,16 @@ Features:
  - Less efficient size and (de)serialization
 
 
-##How to use Borsh Serialization
+## How to use Borsh Serialization
 
 Lets make an example application to store events, each of which has owner, ticket price and guests list.
 
-###Import Borsh
+### Import Borsh
 ```rust
 use near_sdk::borsh::{self, BorshSerialize, BorshDeserialize};
 ```
 
-###Define the contract structure
+### Define the contract structure
 
 We read/write data about events, each event belongs to corresponding NEAR account and contains:
  - price [type: u128] amount on NEAR tokens to pay for event ticket
@@ -47,7 +47,7 @@ pub struct Contract {
 }
 ```
 
-###Define a data-structure for `Event` object
+### Define a data-structure for `Event` object
 
 ```rust
 #[derive(BorshDeserialize, BorshSerialize)]
@@ -79,7 +79,7 @@ impl Default for Contract{
 }
 ```
 
-##Read method
+## Read method
 
 Lets make a method to read event data.
 
@@ -136,7 +136,7 @@ Now we can use `EventJSON` object to create a `get_event` method.
 
 This method works because we converted Event => EventJSON on a fly.
 
-##Write method
+## Write method
 
 Let's make a method to write event data.
 
@@ -167,7 +167,7 @@ Every `guests` list has its own `UnorderedSet` structure initialized by a unique
     }
 ```
 
-##A few more examples
+## A few more examples
 
 Let's create a helper method to set a list of guests for a given event. 
 Again, we can't create a public method and provide `UnorderedSet` object there.
